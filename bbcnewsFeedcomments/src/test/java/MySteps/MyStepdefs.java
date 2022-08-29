@@ -2,16 +2,16 @@ package MySteps;
 
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
@@ -110,8 +110,19 @@ public class MyStepdefs {
     }
 
     @Then("comments are fitered by selected option")
-    public void commentsAreFiteredBySelectedOption() {
+    public void commentsAreFiteredBySelectedOption() throws Exception {
+
+        Date currentdate = new Date();
+
+        System.out.println(currentdate);
+        String ScreenshotDate = currentdate.toString().replace(" ", "-").replace(":", "-");
+        Thread.sleep(3000);
+
+        File Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
 
+        FileUtils.copyFile(Screenshot, new File("/Users/abhishekdixit/Documents/Cucumber/Cucumber/bbcnewsFeedcomments/Screenshots/" + ScreenshotDate + ".png"));
+
+        driver.quit();
     }
 }

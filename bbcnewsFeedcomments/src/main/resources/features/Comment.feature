@@ -10,6 +10,7 @@ Feature: Test login functionality
     And user clicks on view Comments button
     Then user is able to view comments
 
+
   @Sorting
   Scenario: Verify that user is able to sort comments
 

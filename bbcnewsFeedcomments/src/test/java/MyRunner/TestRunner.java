@@ -14,8 +14,12 @@ import org.junit.runner.RunWith;
 
                 features = {"src/main/resources/features"},
                 glue = { "MySteps" },
-                tags="@Verify or @Sorting"
+                tags="@Verify or @Sorting",
+                plugin = {"pretty", "junit:target/JUnitReports/report.xml",
+                        "json:target/JSONReports/report.json",
+                        "html:target/HtmlReports"}
         )
+
 
 
 public class TestRunner {
