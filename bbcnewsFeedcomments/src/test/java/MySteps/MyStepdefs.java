@@ -97,7 +97,6 @@ public class MyStepdefs {
         String txt = driver.findElement(By.xpath("//span[@class='comments__heading-title-text']")).getText();
         Assert.assertEquals("Join the conversation", txt);
 
-
     }
 
     @When("user can sort comments using show filter dropdown")

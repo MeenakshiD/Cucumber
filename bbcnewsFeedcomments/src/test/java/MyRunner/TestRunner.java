@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 
         (
 
-
                 features = {"src/main/resources/features"},
                 glue = { "MySteps" },
                 tags="@Verify or @Sorting",

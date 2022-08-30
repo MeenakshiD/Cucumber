@@ -11,6 +11,7 @@ Feature: Test login functionality
     Then user is able to view comments
 
 
+
   @Sorting
   Scenario: Verify that user is able to sort comments
 
