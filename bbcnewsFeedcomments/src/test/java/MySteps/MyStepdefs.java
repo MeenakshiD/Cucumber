@@ -83,10 +83,10 @@ public class MyStepdefs {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@title='farz']")));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@title='farz']")));
 
-        String comment = driver.findElement(By.xpath("//span[@title='farz']")).getText();
-        Assert.assertEquals("farz", comment);
+        //String comment = driver.findElement(By.xpath("//span[@title='farz']")).getText();
+        //Assert.assertEquals("farz", comment);
 
     }
 
@@ -94,7 +94,7 @@ public class MyStepdefs {
     public void userIsOnCommentSection() throws Exception {
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        String txt = driver.findElement(By.xpath("//span[text()='Join the conversation']")).getText();
+        String txt = driver.findElement(By.xpath("//span[@class='comments__heading-title-text']")).getText();
         Assert.assertEquals("Join the conversation", txt);
 
 
