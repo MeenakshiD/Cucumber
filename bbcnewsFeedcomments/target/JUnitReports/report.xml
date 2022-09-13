@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="26.679">
-    <testcase classname="Test login functionality" name="Verify user is able to view comment section" time="22.396">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="58.986">
+    <testcase classname="Test login functionality" name="Verify user is able to view comment section" time="14.985">
         <system-out>
             <![CDATA[Given browser is open.......................................................passed
 And user is on Home page....................................................passed
@@ -12,7 +12,7 @@ Then user is able to view comments..........................................pass
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Test login functionality" name="Verify that user is able to sort comments" time="4.049">
+    <testcase classname="Test login functionality" name="Verify that user is able to sort comments" time="43.699">
         <system-out>
             <![CDATA[Given user is on comment section............................................passed
 When user can sort comments using show filter dropdown......................passed

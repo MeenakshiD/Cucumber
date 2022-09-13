@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
+//import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Date;
@@ -56,28 +57,43 @@ public class MyStepdefs {
     @And("user clicks on comment button on top")
     public void userClicksOnCommentButtonOnTop() {
 
+        try {
+            driver.findElement(By.xpath("//span[contains(text(),'Comments')]")).click();
 
-        driver.findElement(By.xpath("//span[contains(text(),'Comments')]")).click();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+
+            System.out.println("Comment button is not available");
+        }
 
     }
 
     @And("user is navigated to the bottom of news")
     public void userIsNavigatedToTheBottomOfNews() {
-
+try {
         driver.findElement(By.xpath("//button[normalize-space()='View comments']")).click();
+
+    }catch (org.openqa.selenium.NoSuchElementException a) {
+
+    System.out.println("Comment is not available for this post");
+}
 
     }
 
     @And("user clicks on view Comments button")
     public void userClicksOnViewCommentsButton() {
-
+try {
         driver.findElement(By.xpath("//button[normalize-space()='View comments']")).click();
+
+    }catch (org.openqa.selenium.NoSuchElementException b) {
+
+    System.out.println("Comment button is not visible");
+}
 
     }
 
     @Then("user is able to view comments")
-    public void userIsAbleToViewComments() throws Exception {
-
+    public void userIsAbleToViewComments()  {
+try {
         driver.switchTo().frame(driver.findElement(By.xpath(".//iframe[@title='Comments']")));
 
 
@@ -89,38 +105,62 @@ public class MyStepdefs {
         //Assert.assertEquals("farz", comment);
 
     }
+catch (org.openqa.selenium.NoSuchElementException c) {
+
+    System.out.println("Comment frame is not available");
+}
+
+    }
 
     @Given("user is on comment section")
-    public void userIsOnCommentSection() throws Exception {
-
+    public void userIsOnCommentSection() {
+try {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         String txt = driver.findElement(By.xpath("//span[@class='comments__heading-title-text']")).getText();
         Assert.assertEquals("Join the conversation", txt);
 
     }
+catch (org.openqa.selenium.NoSuchElementException d) {
+
+    System.out.println("Comment section is not visible");
+}
+
+    }
 
     @When("user can sort comments using show filter dropdown")
-    public void userCanSortCommentsUsingShowFilterDropdown() throws Exception {
-
+    public void userCanSortCommentsUsingShowFilterDropdown() {
+try {
         Select show = new Select(driver.findElement(By.id("sort-select")));
         show.selectByVisibleText("Latest");
 
 
+    }catch (org.openqa.selenium.NoSuchElementException f) {
+
+    System.out.println("Comment sorting option is not available");
+}
+
     }
 
     @Then("comments are fitered by selected option")
-    public void commentsAreFiteredBySelectedOption() throws Exception {
+    public void commentsAreFiteredBySelectedOption() throws IOException,InterruptedException {
+try {
+    Date currentdate = new Date();
 
-        Date currentdate = new Date();
+    System.out.println(currentdate);
+    String ScreenshotDate = currentdate.toString().replace(" ", "-").replace(":", "-");
+    Thread.sleep(3000);
 
-        System.out.println(currentdate);
-        String ScreenshotDate = currentdate.toString().replace(" ", "-").replace(":", "-");
-        Thread.sleep(3000);
-
-        File Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    File Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
 
-        FileUtils.copyFile(Screenshot, new File("/Users/abhishekdixit/Documents/Cucumber/Cucumber/bbcnewsFeedcomments/Screenshots/" + ScreenshotDate + ".png"));
+    FileUtils.copyFile(Screenshot, new File("/Users/abhishekdixit/Documents/Cucumber/Cucumber/bbcnewsFeedcomments/Screenshots/" + ScreenshotDate + ".png"));
+
+} catch (NoSuchElementException g) {
+
+        System.out.println("Comment section is not available for particular post");
+    }
+
+
 
         driver.quit();
     }
